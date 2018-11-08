@@ -80,5 +80,31 @@ public class Estado8Puzzle {
         return false;
     }
     
+    Estado8Puzzle(int[][] p) { //Construtor passando uma matriz como parâmetro, cria uam cópia para o tabuleiro
+        for (int l=0;l<tamanho;l++) {
+            //System.arraycopy(p,0,tabuleiro,0,tam);
+            for (int c=0;c<tamanho;c++) {
+                tabuleiro[l][c] = p[l][c];
+            }
+            
+        }
+    }
+    
+    public boolean ehMeta() { // Verifica se o tabuleiro é igual ao objetivo, passado o objetivo por parâmetro
+        return this.verificaIgualdade(estadoMeta);
+    }
+    
+    private final static Estado8Puzzle estadoMeta = setEstadoMeta();
+    
+    private static Estado8Puzzle setEstadoMeta() { // Seleciona o estado objetivo a ser alcançado
+        Estado8Puzzle estadoMeta = new Estado8Puzzle(new int[][] {{1,2,3},{4,5,6},{7,8,0}});
+        estadoMeta.setPosBranco();
+        return estadoMeta;
+    }
+    
+    public int hashCode() {
+        return toString().hashCode();
+    }
+    
     
 }

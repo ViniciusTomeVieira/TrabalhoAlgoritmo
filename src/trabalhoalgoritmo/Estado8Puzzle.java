@@ -11,7 +11,7 @@ package trabalhoalgoritmo;
  */
 
 
-public class TrabalhoAlgoritmo {
+public class Estado8Puzzle {
 
     
     public static void main(String[] args) {
@@ -23,8 +23,8 @@ public class TrabalhoAlgoritmo {
         "Este problema consiste em posicionar 8\n" +
         "numeros em um tabuleiro 3x3 na seguinte disposcao:\n"+
         "1 2 3\n"+
-        "8 0 4\n"+
-        "7 6 5\n"+
+        "4 5 6\n"+
+        "7 8 0\n"+
         "sendo que o espaco pode se mover.\n";
     }
     
@@ -37,7 +37,7 @@ public class TrabalhoAlgoritmo {
      /**
      *  Cria um estado inicial (aleatorio)
      */
-    public TrabalhoAlgoritmo() {
+    public Estado8Puzzle() {
         for (int i=0;i< (tamanho*tamanho);i++) {
             // tenta até achar uma posicao livre
             int linha = Math.round( (float)(Math.random()*(tamanho-1)) ); //Gera um número de 0 a 2
@@ -61,5 +61,24 @@ public class TrabalhoAlgoritmo {
             }
         }
     }
+    
+    /**
+     * verifica se um estado e igual a outro
+     */
+    public boolean verificaIgualdade(Object objeto) {
+    	if (objeto instanceof Estado8Puzzle) {
+            Estado8Puzzle e = (Estado8Puzzle)objeto;
+            for (int l=0;l<tamanho;l++) {
+                for (int c=0;c<tamanho;c++) {
+                    if (tabuleiro[l][c] != e.tabuleiro[l][c]) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    
     
 }
